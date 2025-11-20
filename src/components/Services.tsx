@@ -14,8 +14,8 @@ const Services = () => {
       icon: "💻"
     },
     {
-      title: "Flutter + Backend + Desktop",
-      description: "End-to-end development solutions including Flutter apps, backend services with Node.js/Firebase, and desktop application deployment.",
+      title: "Flutter + Backend",
+      description: "End-to-end development solutions including Flutter apps, backend services with Node.js/Firebase, and scalable cloud infrastructure.",
       icon: "🚀"
     }
   ];
