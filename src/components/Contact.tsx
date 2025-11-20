@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import emailjs from "@emailjs/browser";
+import { supabase } from "@/integrations/supabase/client";
 import { Mail, MapPin, Phone, Send } from "lucide-react";
 
 const Contact = () => {
@@ -15,8 +15,8 @@ const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    user_name: "",
-    user_email: "",
+    name: "",
+    email: "",
     subject: "",
     message: ""
   });
@@ -31,7 +31,7 @@ const Contact = () => {
 
   const handleSubmit = async () => {
     // Validate all fields are filled
-    if (!formData.user_name || !formData.user_email || !formData.subject || !formData.message) {
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
       toast({
         title: "Error",
         description: "Please fill in all fields before sending.",
@@ -43,18 +43,11 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      await emailjs.send(
-        "service_fjezvjy",
-        "template_0bbiooo",
-        {
-          user_name: formData.user_name,
-          user_email: formData.user_email,
-          subject: formData.subject,
-          message: formData.message,
-          to_email: "naheeljakkeeri@gmail.com"
-        },
-        "Q34CIIwBoQ2L0XT5H"
-      );
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: formData
+      });
+
+      if (error) throw error;
 
       toast({
         title: "Message Sent! 🎉",
@@ -62,13 +55,13 @@ const Contact = () => {
       });
 
       setFormData({
-        user_name: "",
-        user_email: "",
+        name: "",
+        email: "",
         subject: "",
         message: ""
       });
     } catch (error) {
-      console.error("EmailJS Error:", error);
+      console.error("Email Error:", error);
       toast({
         title: "Error",
         description: "Failed to send message. Please try again or contact directly via email.",
@@ -255,9 +248,9 @@ const Contact = () => {
             <div ref={formRef} className="space-y-6">
               <div>
                 <Input
-                  name="user_name"
+                  name="name"
                   placeholder="Your Name"
-                  value={formData.user_name}
+                  value={formData.name}
                   onChange={handleInputChange}
                   required
                   className="glass-morphism neon-border-purple"
@@ -265,10 +258,10 @@ const Contact = () => {
               </div>
               <div>
                 <Input
-                  name="user_email"
+                  name="email"
                   type="email"
                   placeholder="Your Email"
-                  value={formData.user_email}
+                  value={formData.email}
                   onChange={handleInputChange}
                   required
                   className="glass-morphism neon-border-purple"
