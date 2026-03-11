@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "goyn-28e5b"
+  },
+  "targets": {
+    "portofolio-cea55": {
+      "hosting": {
+        "app": [
+          "portofolio-cea55"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
