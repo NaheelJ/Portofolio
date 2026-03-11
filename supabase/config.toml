@@ -1,4 +1,0 @@
-project_id = "soexxebfhmxbzpvesgzp"
-
-[functions.send-contact-email]
-verify_jwt = false

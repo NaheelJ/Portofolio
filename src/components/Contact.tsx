@@ -2,7 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { db } from "@/lib/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { Mail, MapPin, Phone, Send, ArrowUpRight } from "lucide-react";
 
 const contactInfo = [
@@ -37,11 +37,12 @@ const Contact = () => {
       return toast({title:"Error",description:"Please fill all fields.",variant:"destructive"});
     setSubmitting(true);
     try {
-      // Connect to Firestore "contacts" collection
-      const contactsRef = collection(db, "contacts");
+      // Connect to Firestore "CONTACT" collection with a milliseconds epoch ID
+      const explicitId = Date.now().toString();
+      const contactDocRef = doc(db, "CONTACT", explicitId);
       
       // Save data payload to Firebase
-      await addDoc(contactsRef, {
+      await setDoc(contactDocRef, {
         name: form.user_name,
         email: form.user_email,
         subject: form.subject,
