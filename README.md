@@ -2,6 +2,8 @@
 
 A premium, high-performance personal portfolio website built to showcase my professional software development experience. Designed with a sleek, minimalist dark theme, immersive fluid 3D background animations, and native browser rendering integrations.
 
+🔗 **Live Portfolio:** [https://portofolio-cea55.web.app/](https://portofolio-cea55.web.app/)
+
 ---
 
 ## 📦 What's Included
