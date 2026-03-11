@@ -171,21 +171,20 @@ const Projects = () => {
           <div className="grid md:grid-cols-2 gap-5">
             {projects.map((p, i) => (
               <motion.div key={i}
-                initial={{ opacity: 0, y: 40 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: i * 0.12 }}
-                className={i === 0 ? "md:col-span-2" : ""}>
+                initial={{ opacity: 0, y: 40 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: i * 0.12 }}>
                 <TiltCard className="rounded-3xl overflow-hidden card-hover cursor-pointer group h-full glass">
                   <div className="h-full p-7 flex flex-col" onClick={() => setSelected(p)}>
                     {/* Top accent line */}
                     <div className="h-px w-full mb-6 rounded-full" style={{ background: "linear-gradient(90deg,#dee2e6,rgba(255,255,255,0.2),transparent)" }} />
-                    <div className={`flex ${i === 0 ? "md:flex-row gap-10 items-start" : "flex-col"}`}>
-                      <div className={i === 0 ? "flex-1" : ""}>
+                    <div className="flex flex-col">
+                      <div>
                         <div className="text-xs font-mono mb-3" style={{ color: "#495057" }}>{String(i + 1).padStart(2, "0")}</div>
-                        <h3 className={`font-bold mb-3 leading-snug transition-colors text-[1.05rem] ${i === 0 ? "md:text-[1.25rem]" : ""}`} style={{ color: "#f8f9fa" }}>
+                        <h3 className="font-bold mb-3 leading-snug transition-colors text-[1.05rem]" style={{ color: "#f8f9fa" }}>
                           {p.title}
                         </h3>
                         <p className="text-sm leading-relaxed mb-5" style={{ color: "#6c757d" }}>{p.description}</p>
                       </div>
-                      <div className={i === 0 ? "flex-1" : ""}>
+                      <div>
                         <div className="flex flex-wrap gap-1.5 mb-5">
                           {p.technologies.slice(0, 4).map((t, j) => (
                             <span key={j} className="text-xs px-2.5 py-1 rounded-lg font-medium"
@@ -200,15 +199,6 @@ const Projects = () => {
                             </span>
                           )}
                         </div>
-                        {i === 0 && (
-                          <ul className="hidden md:block space-y-2 mb-4">
-                            {p.details.slice(0, 2).map((d, j) => (
-                              <li key={j} className="flex items-start gap-2 text-xs" style={{ color: "#6c757d" }}>
-                                <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style={{ color: "#ffffff" }} />{d}
-                              </li>
-                            ))}
-                          </ul>
-                        )}
                       </div>
                     </div>
                     <div className="mt-auto pt-5" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
