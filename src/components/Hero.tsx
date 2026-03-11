@@ -1,11 +1,27 @@
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Download, ArrowRight, ArrowDown } from "lucide-react";
 import naheelPhoto from "@/assets/naheel-photo-removebg.png";
 
 
 
 const Hero = () => {
+  const [typedText, setTypedText] = useState("");
+  const fullText = "Full Stack Software Developer";
+
+  useEffect(() => {
+    let i = 0;
+    const delay = setTimeout(() => {
+      const interval = setInterval(() => {
+        setTypedText(fullText.slice(0, i + 1));
+        i++;
+        if (i === fullText.length) clearInterval(interval);
+      }, 70); // Typing speed
+      return () => clearInterval(interval);
+    }, 600); // Delay before starting
+    return () => clearTimeout(delay);
+  }, []);
+
   const scrollTo = (id: string) => {
     if ((window as any).lenis) {
       (window as any).lenis.scrollTo(id, { offset: 0, duration: 1.2 });
@@ -26,16 +42,6 @@ const Hero = () => {
 
           {/* Left */}
           <div className="mt-8 md:mt-0">
-            {/* Available badge
-            <motion.div initial={{opacity:0,y:14}} animate={{opacity:1,y:0}} transition={{delay:0.1}}
-              className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full mb-8 glass"
-              style={{ background:"transparent", border:"1px solid rgba(255,255,255,0.15)" }}>
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{background:"#ced4da"}}></span>
-                <span className="relative inline-flex rounded-full h-2 w-2" style={{background:"#ffffff", boxShadow:"0 0 8px #ffffff"}}></span>
-              </span>
-              <span className="text-[11px] font-semibold tracking-widest uppercase" style={{color:"#f8f9fa"}}>Available for Work</span>
-            </motion.div> */}
 
             <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.18 }}
               className="font-medium mb-2 tracking-wide" style={{ color: "#6c757d" }}>
@@ -47,9 +53,14 @@ const Hero = () => {
               Naheel J
             </motion.h1>
 
-            <motion.h2 initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.32 }}
-              className="text-xl md:text-2xl font-semibold mb-5" style={{ color: "#ced4da" }}>
-              Full Stack Flutter Developer
+            <motion.h2 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.32 }}
+              className="text-xl md:text-2xl font-semibold mb-5 flex items-center" style={{ color: "#ced4da", minHeight: "2rem" }}>
+              {typedText}
+              <motion.span 
+                animate={{ opacity: [1, 0] }} 
+                transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+                className="inline-block w-[3px] h-[1.1em] ml-1 bg-white"
+              />
             </motion.h2>
 
             <motion.div initial={{ scaleX: 0, originX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.38, duration: 0.5 }}

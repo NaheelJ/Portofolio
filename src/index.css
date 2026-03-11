@@ -173,6 +173,30 @@
     mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
     -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
   }
+
+  @keyframes ambientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .premium-ambient-bg {
+    background: linear-gradient(-45deg, #000000, #030712, #080a15, #000000);
+    background-size: 400% 400%;
+    animation: ambientFlow 18s ease-in-out infinite;
+  }
+
+  @keyframes blobMove {
+    0% { transform: translate(0px, 0px) scale(1); opacity: 0.6; }
+    33% { transform: translate(30px, -50px) scale(1.1); opacity: 0.8; }
+    66% { transform: translate(-20px, 20px) scale(0.9); opacity: 0.7; }
+    100% { transform: translate(0px, 0px) scale(1); opacity: 0.6; }
+  }
+  .animate-blob {
+    animation: blobMove 14s infinite ease-in-out;
+  }
+  .animation-delay-2000 { animation-delay: 2s; }
+  .animation-delay-4000 { animation-delay: 4s; }
 }
 
 @layer base {

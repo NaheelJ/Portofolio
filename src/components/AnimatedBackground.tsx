@@ -238,12 +238,7 @@ export default function AnimatedBackground() {
   return (
     <div className="fixed inset-0 z-0 pointer-events-none">
       {/* Dynamic base gradient map */}
-      <div 
-        className="absolute inset-0 bg-background"
-        style={{
-          background: "radial-gradient(circle at center, #0a0a0a 0%, #000000 100%)"
-        }}
-      />
+      <div className="absolute inset-0 premium-ambient-bg" />
       
       {/* Floating abstract glowing orbs */}
       <div 
@@ -265,6 +260,17 @@ export default function AnimatedBackground() {
           filter: "blur(40px)"
         }}
       />
+
+      {/* Mobile Optimized Dynamic Glows Phase */}
+      <div 
+        className="md:hidden absolute top-[-5%] left-[-15%] w-[350px] h-[350px] animate-blob pointer-events-none" 
+        style={{ background: 'radial-gradient(circle, rgba(79,70,229,0.35) 0%, transparent 70%)' }} />
+      <div 
+        className="md:hidden absolute top-[40%] right-[-20%] w-[380px] h-[380px] animate-blob animation-delay-2000 pointer-events-none" 
+        style={{ background: 'radial-gradient(circle, rgba(14,165,233,0.3) 0%, transparent 70%)' }} />
+      <div 
+        className="md:hidden absolute bottom-[5%] left-[5%] w-[350px] h-[350px] animate-blob animation-delay-4000 pointer-events-none" 
+        style={{ background: 'radial-gradient(circle, rgba(56,189,248,0.25) 0%, transparent 70%)' }} />
       
       {/* Particle Canvas layer over the gradients */}
       <canvas 
