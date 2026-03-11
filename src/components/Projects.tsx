@@ -180,28 +180,28 @@ const Projects = () => {
                     <div className={`flex ${i === 0 ? "md:flex-row gap-10 items-start" : "flex-col"}`}>
                       <div className={i === 0 ? "flex-1" : ""}>
                         <div className="text-xs font-mono mb-3" style={{ color: "#495057" }}>{String(i + 1).padStart(2, "0")}</div>
-                        <h3 className="font-bold mb-3 leading-snug transition-colors" style={{ color: "#f8f9fa", fontSize: i === 0 ? "1.25rem" : "1.05rem" }}>
+                        <h3 className={`font-bold mb-3 leading-snug transition-colors text-[1.05rem] ${i === 0 ? "md:text-[1.25rem]" : ""}`} style={{ color: "#f8f9fa" }}>
                           {p.title}
                         </h3>
                         <p className="text-sm leading-relaxed mb-5" style={{ color: "#6c757d" }}>{p.description}</p>
                       </div>
                       <div className={i === 0 ? "flex-1" : ""}>
                         <div className="flex flex-wrap gap-1.5 mb-5">
-                          {p.technologies.slice(0, i === 0 ? 6 : 4).map((t, j) => (
+                          {p.technologies.slice(0, 4).map((t, j) => (
                             <span key={j} className="text-xs px-2.5 py-1 rounded-lg font-medium"
                               style={{ background: "rgba(255,255,255,0.05)", color: "#ffffff", border: "1px solid rgba(255,255,255,0.3)" }}>
                               {t}
                             </span>
                           ))}
-                          {p.technologies.length > (i === 0 ? 6 : 4) && (
+                          {p.technologies.length > 4 && (
                             <span className="text-xs px-2.5 py-1 rounded-lg"
                               style={{ background: "rgba(255,255,255,0.02)", color: "#ffffff", border: "1px solid rgba(255,255,255,0.2)" }}>
-                              +{p.technologies.length - (i === 0 ? 6 : 4)}
+                              +{p.technologies.length - 4}
                             </span>
                           )}
                         </div>
                         {i === 0 && (
-                          <ul className="space-y-2 mb-4">
+                          <ul className="hidden md:block space-y-2 mb-4">
                             {p.details.slice(0, 2).map((d, j) => (
                               <li key={j} className="flex items-start gap-2 text-xs" style={{ color: "#6c757d" }}>
                                 <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style={{ color: "#ffffff" }} />{d}

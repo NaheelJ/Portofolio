@@ -14,7 +14,14 @@ const Navbar = () => {
     const fn = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", fn); return () => window.removeEventListener("scroll", fn);
   }, []);
-  const go = (href: string) => { document.querySelector(href)?.scrollIntoView({behavior:"smooth"}); setOpen(false); };
+  const go = (href: string) => { 
+    if ((window as any).lenis) {
+      (window as any).lenis.scrollTo(href, { offset: 0, duration: 1.2 });
+    } else {
+      document.querySelector(href)?.scrollIntoView({behavior:"smooth"}); 
+    }
+    setOpen(false); 
+  };
 
   return (
     <motion.nav initial={{y:-80, x:"-50%", opacity:0}} animate={{y:0, x:"-50%", opacity:1}}
@@ -29,7 +36,7 @@ const Navbar = () => {
         boxShadow: scrolled ? "inset 0 0 20px rgba(255,255,255,0.02), 0 8px 32px rgba(0,0,0,0.4)" : "none"
       }}>
       <div className="px-5 md:px-6">
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-start md:justify-center">
           <div className="hidden md:flex items-center gap-2">
             {NAV.map(item => (
               <motion.button key={item.name} id={`nav-${item.name.toLowerCase()}`}

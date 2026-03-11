@@ -157,6 +157,11 @@ export default function AnimatedBackground() {
 
     function animate() {
       if(!ctx || !canvas) return;
+
+      if (window.innerWidth <= 768) {
+        animationFrameId = requestAnimationFrame(animate);
+        return;
+      }
       
       // Interpolate (lerp) mouse for buttery smoothness
       if (targetMouse.x !== -1000) {
@@ -166,10 +171,10 @@ export default function AnimatedBackground() {
       
       // Update glowing orbs parallax using pure DOM for performance out of React render cycle
       if (orb1 && orb2 && targetMouse.x !== -1000) {
-         const xOffset = (currentMouse.x / window.innerWidth - 0.5) * 60; // Max 60px shift
-         const yOffset = (currentMouse.y / window.innerHeight - 0.5) * 60;
-         orb1.style.transform = `translate(calc(-50% + ${xOffset}px), calc(-50% + ${yOffset}px))`;
-         orb2.style.transform = `translate(calc(50% + ${-xOffset * 1.5}px), calc(50% + ${-yOffset * 1.5}px))`;
+         const xOffset = (currentMouse.x / window.innerWidth - 0.5) * 40; // Max 40px shift
+         const yOffset = (currentMouse.y / window.innerHeight - 0.5) * 40;
+         orb1.style.transform = `translate3d(calc(-50% + ${xOffset}px), calc(-50% + ${yOffset}px), 0)`;
+         orb2.style.transform = `translate3d(calc(50% + ${-xOffset * 1.5}px), calc(50% + ${-yOffset * 1.5}px), 0)`;
       }
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -216,10 +221,10 @@ export default function AnimatedBackground() {
       targetMouse.y = -1000;
     };
 
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseleave", handleMouseLeave);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize, { passive: true });
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    window.addEventListener("mouseleave", handleMouseLeave, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -243,28 +248,28 @@ export default function AnimatedBackground() {
       {/* Floating abstract glowing orbs */}
       <div 
         id="bg-orb-1"
-        className="absolute top-[20%] left-[20%] w-[600px] h-[600px] rounded-full mix-blend-screen pointer-events-none opacity-[0.15] transition-transform duration-100 ease-out"
+        className="hidden md:block absolute top-[20%] left-[20%] w-[400px] h-[400px] md:w-[600px] md:h-[600px] rounded-full pointer-events-none opacity-[0.10] md:opacity-[0.15] transition-transform duration-100 ease-out will-change-transform"
         style={{
           background: "radial-gradient(circle, rgba(79, 70, 229, 0.8) 0%, transparent 70%)",
-          transform: "translate(-50%, -50%)",
-          filter: "blur(60px)"
+          transform: "translate3d(-50%, -50%, 0)",
+          filter: "blur(40px)"
         }}
       />
       
       <div 
         id="bg-orb-2"
-        className="absolute bottom-[20%] right-[15%] w-[700px] h-[700px] rounded-full mix-blend-screen pointer-events-none opacity-[0.12] transition-transform duration-100 ease-out"
+        className="hidden md:block absolute bottom-[20%] right-[15%] w-[400px] h-[400px] md:w-[700px] md:h-[700px] rounded-full pointer-events-none opacity-[0.08] md:opacity-[0.12] transition-transform duration-100 ease-out will-change-transform"
         style={{
           background: "radial-gradient(circle, rgba(14, 165, 233, 0.8) 0%, transparent 70%)",
-          transform: "translate(50%, 50%)",
-          filter: "blur(60px)"
+          transform: "translate3d(50%, 50%, 0)",
+          filter: "blur(40px)"
         }}
       />
       
       {/* Particle Canvas layer over the gradients */}
       <canvas 
         ref={canvasRef} 
-        className="absolute inset-0 pointer-events-none w-full h-full"
+        className="hidden md:block absolute inset-0 pointer-events-none w-full h-full"
       />
     </div>
   );

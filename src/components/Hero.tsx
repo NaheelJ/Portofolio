@@ -6,7 +6,13 @@ import naheelPhoto from "@/assets/naheel-photo-removebg.png";
 
 
 const Hero = () => {
-  const scrollTo = (id: string) => document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
+  const scrollTo = (id: string) => {
+    if ((window as any).lenis) {
+      (window as any).lenis.scrollTo(id, { offset: 0, duration: 1.2 });
+    } else {
+      document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
@@ -15,11 +21,11 @@ const Hero = () => {
       <div className="absolute inset-x-0 bottom-0 h-36 pointer-events-none z-10"
         style={{ background: "linear-gradient(to top,#000000,transparent)" }} />
 
-      <div className="container mx-auto px-6 relative z-10 pt-24">
-        <div className="grid md:grid-cols-2 gap-12 items-center min-h-[calc(100vh-6rem)]">
+      <div className="container mx-auto px-6 relative z-10 pt-32 md:pt-40">
+        <div className="grid md:grid-cols-2 gap-12 items-center min-h-[calc(100vh-8rem)]">
 
           {/* Left */}
-          <div>
+          <div className="mt-8 md:mt-0">
             {/* Available badge
             <motion.div initial={{opacity:0,y:14}} animate={{opacity:1,y:0}} transition={{delay:0.1}}
               className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full mb-8 glass"
@@ -106,12 +112,12 @@ I specialize in Flutter, Firebase, Node.js, and Google Cloud Platform, deliverin
 
             {/* Rotating rings */}
             <motion.div animate={{ rotate: -360 }} transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
-              className="absolute w-[310px] h-[310px] md:w-[360px] md:h-[360px] rounded-full"
+              className="absolute hidden md:block w-[310px] h-[310px] md:w-[360px] md:h-[360px] rounded-full"
               style={{ border: "1px solid rgba(255,255,255,0.5)" }} />
 
             {/* Orbit dots */}
             {[0, 72, 144, 216, 288].map((deg, i) => (
-              <motion.div key={i} className="absolute w-1.5 h-1.5 rounded-full"
+              <motion.div key={i} className="absolute hidden md:block w-1.5 h-1.5 rounded-full"
                 style={{
                   background: i % 2 === 0 ? "#495057" : "#dee2e6",
                   top: "50%", left: "50%", transformOrigin: "0 0",
@@ -148,10 +154,10 @@ I specialize in Flutter, Firebase, Node.js, and Google Cloud Platform, deliverin
                   y: { delay: b.delay, duration: 4 + i, repeat: Infinity, ease: "easeInOut" }
                 }}
                 whileHover={{ scale: 1.06, cursor: "pointer" }}
-                className={`absolute ${b.pos} rounded-3xl px-5 py-3 z-20 glass`}
+                className={`absolute ${b.pos} rounded-2xl md:rounded-3xl px-3 py-2 md:px-5 md:py-3 z-20 glass`}
                 style={{ background: "rgba(0,0,0,0.6)", boxShadow: "0 10px 30px rgba(0,0,0,0.5)" }}>
-                <div className="text-xs mb-0.5" style={{ color: "#adb5bd" }}>{b.label}</div>
-                <div className="text-xl font-bold" style={{ color: "#ffffff" }}>{b.value}</div>
+                <div className="text-[10px] md:text-xs mb-0.5" style={{ color: "#adb5bd" }}>{b.label}</div>
+                <div className="text-base md:text-xl font-bold leading-tight" style={{ color: "#ffffff" }}>{b.value}</div>
               </motion.div>
             ))}
           </motion.div>

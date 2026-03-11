@@ -45,8 +45,8 @@ const Services = () => {
               whileHover={{y:-5}}
               className="relative card-hover p-7 rounded-3xl transition-all duration-300 cursor-default glass">
               {s.badge && (
-                <div className="absolute top-5 right-5 text-xs px-2.5 py-1 rounded-full font-semibold"
-                  style={{background:"#dee2e6",color:"#f8f9fa"}}>{s.badge}</div>
+                <div className="absolute top-5 right-5 text-[10px] px-3 py-1.5 rounded-full font-semibold tracking-wide border"
+                  style={{background:"rgba(255,255,255,0.05)",color:"#ffffff",borderColor:"rgba(255,255,255,0.2)",backdropFilter:"blur(12px)"}}>{s.badge}</div>
               )}
               <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-5"
                 style={{background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.3)"}}>

@@ -77,11 +77,11 @@ const About = () => {
         </div>
         <motion.div initial={{opacity:0,y:30}} animate={isInView?{opacity:1,y:0}:{}} transition={{duration:0.8, ease:[0.16, 1, 0.3, 1], delay:0.7}} className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {stats.map((s,i) => (
-            <motion.div key={i} whileHover={{scale:1.04}} className="card-hover text-center p-6 rounded-3xl transition-all glass">
-              <div className="text-4xl font-bold mb-1" style={{color:"#ffffff"}}>
+            <motion.div key={i} whileHover={{scale:1.04}} className="card-hover text-center p-4 md:p-6 rounded-2xl md:rounded-3xl transition-all glass">
+              <div className="text-3xl md:text-4xl font-bold mb-1" style={{color:"#ffffff"}}>
                  <AnimatedCounter target={s.n} suffix={s.s} />
               </div>
-              <div className="text-sm" style={{color:"#6c757d"}}>{s.l}</div>
+              <div className="text-xs md:text-sm" style={{color:"#6c757d"}}>{s.l}</div>
             </motion.div>
           ))}
         </motion.div>

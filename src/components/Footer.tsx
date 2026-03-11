@@ -12,7 +12,7 @@ const Footer = () => (
         </motion.div>
         <div className="text-xs flex items-center gap-1.5" style={{color:"#343a40"}}>
           <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{background:"#dee2e6",boxShadow:"0 0 6px #dee2e6"}}/>
-          Flutter Developer
+          Software Developer
         </div>
       </div>
     </div>
