@@ -236,43 +236,8 @@ export default function AnimatedBackground() {
   }, []);
 
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none">
-      {/* Dynamic base gradient map */}
-      <div className="absolute inset-0 premium-ambient-bg" />
-      
-      {/* Floating abstract glowing orbs */}
-      <div 
-        id="bg-orb-1"
-        className="hidden md:block absolute top-[20%] left-[20%] w-[400px] h-[400px] md:w-[600px] md:h-[600px] rounded-full pointer-events-none opacity-[0.10] md:opacity-[0.15] transition-transform duration-100 ease-out will-change-transform"
-        style={{
-          background: "radial-gradient(circle, rgba(79, 70, 229, 0.8) 0%, transparent 70%)",
-          transform: "translate3d(-50%, -50%, 0)",
-          filter: "blur(40px)"
-        }}
-      />
-      
-      <div 
-        id="bg-orb-2"
-        className="hidden md:block absolute bottom-[20%] right-[15%] w-[400px] h-[400px] md:w-[700px] md:h-[700px] rounded-full pointer-events-none opacity-[0.08] md:opacity-[0.12] transition-transform duration-100 ease-out will-change-transform"
-        style={{
-          background: "radial-gradient(circle, rgba(14, 165, 233, 0.8) 0%, transparent 70%)",
-          transform: "translate3d(50%, 50%, 0)",
-          filter: "blur(40px)"
-        }}
-      />
-
-      {/* Mobile Optimized Dynamic Glows Phase */}
-      <div 
-        className="md:hidden absolute top-[-5%] left-[-15%] w-[350px] h-[350px] animate-blob pointer-events-none" 
-        style={{ background: 'radial-gradient(circle, rgba(79,70,229,0.35) 0%, transparent 70%)' }} />
-      <div 
-        className="md:hidden absolute top-[40%] right-[-20%] w-[380px] h-[380px] animate-blob animation-delay-2000 pointer-events-none" 
-        style={{ background: 'radial-gradient(circle, rgba(14,165,233,0.3) 0%, transparent 70%)' }} />
-      <div 
-        className="md:hidden absolute bottom-[5%] left-[5%] w-[350px] h-[350px] animate-blob animation-delay-4000 pointer-events-none" 
-        style={{ background: 'radial-gradient(circle, rgba(56,189,248,0.25) 0%, transparent 70%)' }} />
-      
-      {/* Particle Canvas layer over the gradients */}
+    <div className="fixed inset-0 z-0 pointer-events-none bg-black">
+      {/* Particle Canvas layer over the black background */}
       <canvas 
         ref={canvasRef} 
         className="hidden md:block absolute inset-0 pointer-events-none w-full h-full"
