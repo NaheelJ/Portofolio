@@ -1,12 +1,12 @@
 {
   "projects": {
-    "default": "goyn-28e5b"
+    "default": "naheel-j-portfolio"
   },
   "targets": {
-    "portofolio-cea55": {
+    "naheel-j-portfolio": {
       "hosting": {
         "app": [
-          "portofolio-cea55"
+          "naheel-j-portfolio"
         ]
       }
     }
