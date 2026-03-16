@@ -3,13 +3,13 @@ import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBLt0le4Vo06kk7TEsFjkaAOYTS3tJt-yg",
-  authDomain: "portofolio-cea55.firebaseapp.com",
-  projectId: "portofolio-cea55",
-  storageBucket: "portofolio-cea55.firebasestorage.app",
-  messagingSenderId: "91114937243",
-  appId: "1:91114937243:web:bbdcead546c6a2d8eedf3e",
-  measurementId: "G-14SM1S9V2T"
+  apiKey: "AIzaSyCMjCdZMQ0in5YGN3RWFfrFNKQO7yQMWDY",
+  authDomain: "naheel-j-portfolio.firebaseapp.com",
+  projectId: "naheel-j-portfolio",
+  storageBucket: "naheel-j-portfolio.firebasestorage.app",
+  messagingSenderId: "1096258110748",
+  appId: "1:1096258110748:web:a3f5cd3b07583713d0e6d9",
+  measurementId: "G-NGJVFX6KJM"
 };
 
 const app = initializeApp(firebaseConfig);
