@@ -122,7 +122,7 @@ const Skills = () => {
 
             {/* Summary Footer */}
             <div className="mt-auto pt-6 border-t border-white/5 flex justify-center">
-              <span className="text-[10px] font-mono tracking-[0.4em] uppercase text-white/20">
+              <span className="text-[10px] font-mono tracking-[0.4em] uppercase text-white">
                 {totalSkills} Technologies Mastered
               </span>
             </div>
@@ -133,4 +133,4 @@ const Skills = () => {
   );
 };
 
-export default Skills;
+export default Skills;

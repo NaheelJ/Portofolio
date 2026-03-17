@@ -10,8 +10,8 @@ const features = [
 ];
 
 const stats = [
-  {n: 2,   s: "+",  l: "Years Experience"},
-  {n: 10,  s: "+",  l: "Projects Delivered"},
+  {n: 2,   s: "",  l: "Years Experience"},
+  {n: 5,  s: "+",  l: "Projects Delivered"},
   {n: 10,  s: "K+", l: "Users Served"},
   {n: 100, s: "%",  l: "Client Satisfaction"},
 ];
@@ -55,7 +55,7 @@ const About = () => {
               <span style={{color:"#dee2e6", borderBottom:"2px solid #dee2e6"}}>Full-Stack Strength</span>
             </h3>
             <div className="space-y-4 leading-relaxed" style={{color:"#adb5bd"}}>
-              <p>With 2+ years of experience and 1+ years of proven experience in software development, I specialize in architecting and delivering high-performance applications using Flutter, Firebase, Node.js, and Google Cloud Platform.</p>
+              <p>With 1.5 years of experience and 1 years of proven experience in software development, I specialize in architecting and delivering high-performance applications using Flutter, Firebase, Node.js, and Google Cloud Platform.</p>
               <p>I focus on writing clean, maintainable, and future-ready code — implementing solid architectures, optimized workflows, and reliable engineering practices.</p>
               <p>From crafting refined Flutter UIs to engineering backend logic, APIs, and cloud-ready infrastructures, I handle end-to-end development that performs at scale.</p>
             </div>
