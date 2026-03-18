@@ -68,9 +68,8 @@ const Hero = () => {
 
             <motion.p initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.42 }}
               className="mb-8 max-w-lg leading-relaxed" style={{ color: "#adb5bd" }}>
-              With 1.5 years of experience in software development, including 1 years of proven professional industry experience, I design and build high-performance, scalable applications ready for production.
-
-I specialize in Flutter, Firebase, Node.js, and Google Cloud Platform, delivering clean, maintainable, and end-to-end solutions that scale reliably under real-world workloads.
+              With 1 year of experience in software development, I design and build high-performance, scalable applications ready for production.
+              specialize in Flutter, Firebase, Node.js, and Google Cloud Platform, delivering clean, maintainable, and end-to-end solutions that scale reliably under real-world workloads.
             </motion.p>
 
             <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
@@ -153,7 +152,7 @@ I specialize in Flutter, Firebase, Node.js, and Google Cloud Platform, deliverin
 
             {/* Stat badges */}
             {[
-              { label: "Experience", value: "1.5 Years", delay: 0.85, pos: "top-2 right-0", yAmp: -4 },
+              { label: "Experience", value: "1 Year", delay: 0.85, pos: "top-2 right-0", yAmp: -4 },
               { label: "Projects", value: "5+", delay: 0.95, pos: "bottom-6 -left-4", yAmp: 5 },
               { label: "Users Served", value: "10K+", delay: 1.05, pos: "bottom-12 -right-8", yAmp: 4 },
             ].map((b, i) => (
