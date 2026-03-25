@@ -1,92 +1,134 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Smartphone, Globe, Layers, Palette, Wrench, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Smartphone, Globe, Layers, Palette, Wrench, ArrowRight, Cloud, Code2, Terminal, Cpu } from "lucide-react";
 
-const services = [
-  { id:"mobile",  icon:Smartphone,title:"Mobile Application Development",  badge:"Most Popular",
-    desc:"End-to-end native-quality mobile apps for Android and iOS using Flutter — from architecture to Play Store deployment.",
-    points:["Native-quality performance","Android & iOS","Firebase integration","Offline-first"] },
-  { id:"web",     icon:Globe,      title:"Web Application Development",     badge:null,
-    desc:"Production-grade web apps built with Flutter Web and Node.js. Scalable, responsive, optimized for all browsers.",
-    points:["Flutter Web & Node.js","Responsive design","Cloud deployment","SEO-ready"] },
-  { id:"cross",   icon:Layers,     title:"Cross-Platform App Development",  badge:null,
-    desc:"Single codebase powering mobile, web, and desktop with platform-specific look and feel.",
-    points:["One codebase","Platform-adaptive UI","Shared logic","Faster delivery"] },
-  { id:"ui",      icon:Palette,    title:"Flutter UI Development",          badge:null,
-    desc:"Pixel-perfect, animated Flutter interfaces. Custom widgets, smooth micro-animations, premium design systems.",
-    points:["Custom widgets","Smooth animations","Design systems","Responsive layouts"] },
-  { id:"maint",   icon:Wrench,     title:"App Maintenance & Optimization",  badge:null,
-    desc:"Performance audits, bug fixes, dependency updates, and feature enhancements for existing Flutter apps.",
-    points:["Performance audits","Bug fixing","Dependency upgrades","App store compliance"] },
+const SPEC_LIST = [
+  { 
+    id: "0x01", 
+    icon: Smartphone, 
+    title: "MOBILE_ARCHITECTURE", 
+    desc: "Engineering high-performance iOS & Android applications with native-level precision using Flutter.",
+    points: ["Cross-platform_Excellence", "Custom_UI_Engines", "Device_Optimization", "App_Store_Mastery"]
+  },
+  { 
+    id: "0x02", 
+    icon: Cloud, 
+    title: "FULL_STACK_CLOUD", 
+    desc: "Architecting scalable backends and seamless API infrastructures on GCP and Firebase.",
+    points: ["GCP_Mastery", "Serverless_Logic", "Real-time_Databases", "Secure_Auth_Systems"]
+  },
+  { 
+    id: "0x03", 
+    icon: Palette, 
+    title: "INTERACTIVE_UI", 
+    desc: "Crafting pixel-perfect, motion-rich experiences that captivate and convert users.",
+    points: ["Micro_animations", "Design_Systems", "Interactive_Prototypes", "Visual_Flow"]
+  },
+  { 
+    id: "0x04", 
+    icon: Globe, 
+    title: "MODERN_WEB", 
+    desc: "Building production-ready web applications that are as fast as they are beautiful.",
+    points: ["Node.js_Nodes", "Performance_Tuning", "Responsive_Grids", "SEO_Mastery"]
+  },
+  { 
+    id: "0x05", 
+    icon: Wrench, 
+    title: "TECHNICAL_AUDIT", 
+    desc: "Deep-diving into existing codebases to optimize performance, security, and scalability.",
+    points: ["Refactoring", "Performance_Tuning", "Security_Hardening", "Legacy_Upgrades"]
+  },
+  { 
+    id: "0x06", 
+    icon: Terminal, 
+    title: "INTEGRATION_SYNC", 
+    desc: "Synchronizing complex data streams across multiple platforms and legacy systems.",
+    points: ["Data_Migration", "API_Middleware", "Webhook_Engines", "State_Persistence"]
+  }
 ];
+
+const SpecCard = ({ spec, index }: { spec: any, index: number }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.05 }}
+      whileHover={{ y: -5 }}
+      className="bg-[#111111] p-10 border border-[#1F1F1F] hover:border-[#00FF9C] transition-all relative group h-full flex flex-col"
+    >
+      <div className="absolute top-4 right-6 text-[10px] font-black text-[#1F1F1F] group-hover:text-[#00FF9C] transition-colors">{spec.id}</div>
+      
+      <div className="w-12 h-12 border border-[#1F1F1F] flex items-center justify-center mb-8 bg-[#0A0A0A] group-hover:border-[#00FF9C] group-hover:bg-[#00FF9C]/10 transition-all">
+        {(() => { const Icon = spec.icon; return <Icon className="text-[#00FF9C]" size={20} />; })()}
+      </div>
+      
+      <h3 className="text-xl font-bold text-[#EDEDED] mb-4 tracking-tighter uppercase group-hover:text-hacker transition-colors">
+        {spec.title}
+      </h3>
+      
+      <p className="text-[12px] text-[#888888] leading-relaxed mb-8 lowercase h-12 line-clamp-2">
+        {spec.desc}
+      </p>
+
+      <ul className="space-y-3 mt-auto border-t border-[#1F1F1F] pt-8 group-hover:border-[#00FF9C]/20 transition-colors">
+        {spec.points.map((p: string, i: number) => (
+          <li key={i} className="flex items-center gap-3 text-[10px] text-[#888888] font-bold uppercase tracking-widest group-hover:text-[#EDEDED] transition-colors">
+            <div className="w-1 h-1 bg-[#1F1F1F] group-hover:bg-[#00FF9C] transition-colors" />
+            {p}
+          </li>
+        ))}
+      </ul>
+    </motion.div>
+  );
+};
 
 const Services = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once:true, margin:"-60px" });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <section id="services" className="py-28 relative overflow-hidden" style={{background:"transparent"}}>
-      <div className="container mx-auto px-6 relative z-10" ref={ref}>
-        <motion.div initial={{opacity:0,y:30}} animate={isInView?{opacity:1,y:0}:{}} transition={{duration:0.8, ease:[0.16, 1, 0.3, 1]}} className="mb-14">
-          <p className="text-xs font-medium tracking-widest uppercase mb-3" style={{color:"#495057"}}>What I Do</p>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{color:"#ffffff"}}>Services</h2>
-              <div className="divider-navy"/>
-            </div>
-            <p className="max-w-md text-sm leading-relaxed" style={{color:"#6c757d"}}>
-              Comprehensive Flutter development services tailored for startups, scale-ups, and enterprises.
-            </p>
-          </div>
-        </motion.div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {services.map((s,i) => (
-            <motion.div key={s.id} id={`service-${s.id}`}
-              initial={{opacity:0,y:40}} animate={isInView?{opacity:1,y:0}:{}} transition={{duration:0.8, ease:[0.16, 1, 0.3, 1], delay:i*0.1}}
-              whileHover={{y:-5}}
-              className="relative card-hover p-7 rounded-3xl transition-all duration-300 cursor-default glass">
-              {s.badge && (
-                <div className="absolute top-5 right-5 text-[10px] px-3 py-1.5 rounded-full font-semibold tracking-wide border"
-                  style={{background:"rgba(255,255,255,0.05)",color:"#ffffff",borderColor:"rgba(255,255,255,0.2)",backdropFilter:"blur(12px)"}}>{s.badge}</div>
-              )}
-              <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-5"
-                style={{background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.3)"}}>
-                <s.icon className="w-5 h-5" style={{color:"#ffffff"}}/>
-              </div>
-              <h3 className="text-base font-bold mb-3 leading-snug" style={{color:"#f8f9fa"}}>{s.title}</h3>
-              <p className="text-sm leading-relaxed mb-5" style={{color:"#6c757d"}}>{s.desc}</p>
-              <div className="w-full h-px mb-5" style={{background:"rgba(255,255,255,0.08)"}}/>
-              <ul className="space-y-2">
-                {s.points.map((pt,j) => (
-                  <li key={j} className="flex items-center gap-2.5 text-xs" style={{color:"#6c757d"}}>
-                    <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0" style={{color:"#ffffff"}}/>
-                    {pt}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+    <section id="services" className="py-32 relative overflow-hidden bg-transparent selection:bg-[#00FF9C] selection:text-black">
+      <div className="container mx-auto px-10 relative z-10" ref={ref}>
+        <div className="flex flex-col items-start mb-24 max-w-4xl border-l border-[#1F1F1F] pl-10">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            className="flex items-center gap-3 mb-6"
+          >
+            <div className="w-6 h-[1px] bg-[#00FF9C]" />
+            <span className="text-[#00FF9C] text-[10px] font-black tracking-[0.4em] uppercase">SYSTEM_CAPABILITIES</span>
+          </motion.div>
+          <h2 className="text-5xl md:text-8xl font-black mb-12 tracking-tighter uppercase leading-[0.8] max-w-3xl">
+            TECHNICAL <br />
+            <span className="text-hacker drop-shadow-[0_0_10px_rgba(0,255,156,0.13)]">_COMMAND_SUITE.</span>
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+          {SPEC_LIST.map((s, i) => (
+            <SpecCard key={s.id} spec={s} index={i} />
           ))}
-          {/* CTA card */}
-          <motion.div initial={{opacity:0,y:40}} animate={isInView?{opacity:1,y:0}:{}} transition={{duration:0.8, ease:[0.16, 1, 0.3, 1], delay:services.length*0.1}}
-            className="relative overflow-hidden rounded-3xl p-7 flex flex-col justify-between"
-            style={{background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.15)",boxShadow:"inset 0 0 30px rgba(255,255,255,0.03)"}}>
-            <div className="absolute -top-12 -right-12 w-40 h-40 rounded-full blur-2xl"
-              style={{background:"rgba(255,255,255,0.4)"}}/>
-            <div className="relative z-10">
-              <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-5"
-                style={{background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.3)"}}>
-                <ArrowRight className="w-5 h-5" style={{color:"#ffffff"}}/>
-              </div>
-              <h3 className="text-xl font-bold mb-3" style={{color:"#ffffff"}}>Have a project in mind?</h3>
-              <p className="text-sm leading-relaxed" style={{color:"#6c757d"}}>
-                Let's talk and turn your idea into a high-quality application.
-              </p>
-            </div>
-            <motion.button whileHover={{scale:1.04}} whileTap={{scale:0.97}}
-              onClick={() => document.querySelector("#contact")?.scrollIntoView({behavior:"smooth"})}
-              className="relative z-10 mt-8 flex items-center justify-center gap-2 text-sm font-semibold group transition-all px-6 py-3.5 rounded-2xl shimmer-btn"
-              style={{background:"#ffffff", color:"#000000"}}>
-              Get in touch
-              <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform"/>
+          
+          {/* CTA MODULE */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="bg-[#111111] p-10 border border-[#00FF9C]/20 flex flex-col justify-center items-start text-left group hover:border-[#00FF9C] transition-all bg-[repeating-linear-gradient(45deg,#111111,#111111_10px,#121212_10px,#121212_20px)]"
+          >
+            <Code2 size={40} className="text-[#00FF9C] mb-8 opacity-40 group-hover:opacity-100 transition-opacity" />
+            <h3 className="text-3xl font-black text-[#EDEDED] mb-4 uppercase tracking-tighter leading-none">
+              READY_FOR_ <br />DEPLOYMENT?
+            </h3>
+            <p className="text-[12px] text-[#888888] mb-10 font-medium">
+              Initialize a project connection and let's craft a digital masterpiece.
+            </p>
+            <motion.button
+              onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
+              whileHover={{ scale: 1.05, backgroundColor: "#00FF9C", color: "#000" }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 bg-transparent border border-[#00FF9C] text-[#00FF9C] font-black uppercase tracking-widest text-[10px] flex items-center gap-3 transition-colors"
+            >
+              EXEC_CONTACT <ArrowRight size={14} />
             </motion.button>
           </motion.div>
         </div>
@@ -94,4 +136,5 @@ const Services = () => {
     </section>
   );
 };
+
 export default Services;
