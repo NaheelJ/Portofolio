@@ -4,7 +4,7 @@ const Footer = () => (
   <footer className="py-10" style={{ borderTop:"1px solid rgba(255,255,255,0.08)" }}>
     <div className="container mx-auto px-6">
       <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-        <div className="text-sm" style={{color:"#495057"}}>© 2025 Naheel J. All rights reserved.</div>
+        <div className="text-sm" style={{color:"#495057"}}>© Naheel J. All rights reserved.</div>
         <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.5}}
           className="text-xs" style={{color:"#343a40"}}>
           Designed & Built by{" "}
