@@ -5,7 +5,7 @@ import naheelPhoto from "@/assets/naheel-photo-removebg.png";
 
 const Hero = () => {
   const [typedText, setTypedText] = useState("");
-  const fullText = "SYSTEM:_ACTIVE_DEVELOPER_READY_FOR_DEPLOYMENT";
+  const fullText = "STATUS: AVAILABLE FOR NEW OPPORTUNITIES";
   const containerRef = useRef<HTMLDivElement>(null);
   
   const { scrollY } = useScroll();
@@ -51,19 +51,18 @@ const Hero = () => {
               transition={{ duration: 0.1, delay: 0.1 }}
             >
               <h1 className="text-7xl md:text-9xl font-black tracking-tighter mb-10 leading-[0.8] uppercase max-w-4xl selection:bg-[#00FF9C] selection:text-black">
-                NAHEEL <br />
-                <span className="text-hacker">JAKKEERI.</span>
+                NAHEEL J <br />
               </h1>
               
               <div className="h-10 mb-10 overflow-hidden">
                 <p className="text-lg md:text-3xl font-medium text-[#888888] tracking-tight lowercase">
-                  [ engineering_digital_excellence ]
+                  [ crafting quality digital experiences ]
                 </p>
               </div>
 
               <div className="max-w-xl text-base md:text-xl text-[#888888] mb-12 leading-relaxed tracking-tight border-l-2 border-[#1F1F1F] pl-8">
-                Transforming complex problems into <span className="text-[#EDEDED] font-bold">pixel-perfect, scalable architectures</span>. 
-                Expert in <span className="text-[#00FF9C]">Flutter</span>, <span className="text-[#00FF9C]">React</span>, and <span className="text-[#00FF9C]">Cloud Systems</span>.
+                Turning complex problems into <span className="text-[#EDEDED] font-bold">clean, scalable, and user-friendly solutions</span>. 
+                Specialized in <span className="text-[#00FF9C]">Flutter</span>, and <span className="text-[#00FF9C]">Cloud Systems</span>.
               </div>
 
               <div className="flex flex-wrap gap-6 mb-20">
@@ -73,7 +72,7 @@ const Hero = () => {
                   whileTap={{ scale: 0.95 }}
                   className="px-10 py-5 bg-transparent border border-[#00FF9C] text-[#00FF9C] font-black uppercase tracking-[0.2em] transition-all hover:shadow-[0_0_20px_rgba(0,255,156,0.4)]"
                 >
-                  _EXECUTE_PORTFOLIO();
+                  View My Work
                 </motion.button>
 
                 <motion.button
@@ -82,7 +81,7 @@ const Hero = () => {
                   whileTap={{ scale: 0.95 }}
                   className="px-10 py-5 bg-transparent border border-[#1F1F1F] text-[#EDEDED] font-black uppercase tracking-[0.2em] transition-all"
                 >
-                  DOWNLOAD_SPECS
+                  Download Resume
                 </motion.button>
               </div>
             </motion.div>
@@ -108,7 +107,7 @@ const Hero = () => {
                     <div className="w-2.5 h-2.5 rounded-none bg-[#1F1F1F]" />
                     <div className="w-2.5 h-2.5 rounded-none bg-[#1F1F1F]" />
                   </div>
-                  <span className="text-[9px] font-black tracking-widest text-[#888888] uppercase select-none">IMAGE_VISUALIZER.EXE</span>
+                  <span className="text-[9px] font-black tracking-widest text-[#888888] uppercase select-none">PROFILE PHOTO</span>
                 </div>
 
                 <div className="relative aspect-[4/5] overflow-hidden group/image bg-black/40 border border-[#1F1F1F]">
@@ -121,12 +120,12 @@ const Hero = () => {
                   
                   {/* Data Overlay */}
                   <div className="absolute top-4 left-4 z-20 flex flex-col gap-1 opacity-0 group-hover/panel:opacity-100 transition-opacity duration-500">
-                    <span className="text-[7px] font-black text-[#00FF9C] tracking-[0.2em]">SCAN_ACTIVE</span>
+                    <span className="text-[7px] font-black text-[#00FF9C] tracking-[0.2em]">OPEN TO WORK</span>
                     <div className="w-8 h-[2px] bg-[#00FF9C]/40" />
                   </div>
 
                   <div className="absolute bottom-4 right-4 z-20 text-[7px] font-black text-[#888888] tracking-widest opacity-0 group-hover/panel:opacity-100 transition-opacity duration-500">
-                    COORD_38.44_LOCK
+                    KERALA, INDIA
                   </div>
 
                   <img 
@@ -175,7 +174,7 @@ const Hero = () => {
           <span className="text-[11px] font-medium text-[#EDEDED]">76.2711° E</span>
         </div>
         <div className="flex flex-col gap-1">
-          <span className="text-[9px] font-black tracking-widest text-[#00FF9C] uppercase">LOCALE:</span>
+          <span className="text-[9px] font-black tracking-widest text-[#00FF9C] uppercase">LOCATION:</span>
           <span className="text-[11px] font-medium text-[#EDEDED]">KERALA, INDIA</span>
         </div>
       </div>
@@ -188,7 +187,7 @@ const Hero = () => {
         className="absolute bottom-10 right-1/2 translate-x-1/2 z-10"
       >
         <div className="flex flex-col items-center gap-4">
-          <span className="text-[9px] font-black tracking-[0.3em] text-[#888888] uppercase rotate-90 mb-10 select-none">SCROLL_DOWN</span>
+          <span className="text-[9px] font-black tracking-[0.3em] text-[#888888] uppercase rotate-90 mb-10 select-none">SCROLL DOWN</span>
           <div className="w-[1px] h-32 bg-gradient-to-b from-[#1F1F1F] via-[#00FF9C] to-transparent animate-pulse" />
         </div>
       </motion.div>
@@ -196,4 +195,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default Hero; 

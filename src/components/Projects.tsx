@@ -14,64 +14,64 @@ export interface Project {
 
 const ProjectRegistry = [
   {
-    id: "0x3A",
-    title: "WINWARD_AI",
+    id: "01",
+    title: "WINWARD AI",
     description: "Enterprise election management system handling 10,000+ concurrent users with real-time analytics and document generation.",
-    technologies: ["FLUTTER", "GCP", "CLOUD_FUNCTIONS", "FIRESTORE", "NODE.JS"],
+    technologies: ["FLUTTER", "GCP", "CLOUD FUNCTIONS", "FIRESTORE", "NODE.JS"],
     details: [
-      "ARCHITECTED_FOR_10K+_CONCURRENT_USERS.",
-      "REAL-TIME_ANALYTICAL_REPORTING_ENGINE.",
-      "AUTOMATED_HIGH-RES_PDF_GENERATION.",
-      "DEVOPS_OWNERSHIP_ON_GCP_INFRA."
+      "Designed to support 10,000+ simultaneous users.",
+      "Real-time analytics and reporting dashboard.",
+      "Automated high-resolution PDF document generation.",
+      "Full ownership of cloud infrastructure on GCP."
     ],
   },
   {
-    id: "0x3B",
-    title: "POSITRON_PLATFORM",
+    id: "02",
+    title: "POSITRON PLATFORM",
     description: "Smart governance ecosystem for 100+ wards, digitizing pension schemes, infrastructure tracking, and citizen communication.",
-    technologies: ["FLUTTER", "FIREBASE", "REAL-TIME_DB", "CLOUD_ARCHITECTURE"],
+    technologies: ["FLUTTER", "FIREBASE", "REAL-TIME DATABASE", "CLOUD ARCHITECTURE"],
     details: [
-      "ACTIVE_DEPLOYMENT_ACROSS_100+_WARDS.",
-      "COMPLEX_ROLE-BASED_WORKFLOW_SECURITY.",
-      "REAL-TIME_INFRA_HEALTH_MONITORING.",
-      "INTEGRATED_CITIZEN_SURVEY_SYSTEMS."
+      "Deployed and active across 100+ municipal wards.",
+      "Advanced role-based access control and permissions.",
+      "Real-time infrastructure health monitoring.",
+      "Integrated citizen survey and feedback systems."
     ],
   },
   {
-    id: "0x3C",
-    title: "GOYN_MOBILITY",
-    description: "Full-scale ride-hailing infrastructure featuring real-time GPS synchronization, driver-user matching, and automated billing.",
-    technologies: ["FLUTTER", "GPS_SYNC", "PAYMENT_GATEWAYS", "LIVE_CHAT"],
+    id: "03",
+    title: "GOYN MOBILITY",
+    description: "Full-scale ride-hailing app featuring real-time GPS tracking, driver-user matching, and automated billing.",
+    technologies: ["FLUTTER", "GPS TRACKING", "PAYMENT GATEWAYS", "LIVE CHAT"],
     details: [
-      "LIVE_GPS_FLEET_SYNC_ARCHITECTURE.",
-      "SECURE_MULTI-PARTY_PAYMENT_INFRA.",
-      "REAL-TIME_ENCRYPTED_COMMUNICATION.",
-      "CROSS-PLATFORM_RESPONSIVE_SYSTEM."
+      "Live GPS fleet tracking and synchronization.",
+      "Secure multi-party payment processing.",
+      "Real-time encrypted in-app communication.",
+      "Cross-platform support for Android and iOS."
     ],
     link: "https://play.google.com/store/apps/details?id=com.spine.goyn_driver",
   },
   {
-    id: "0x3D",
-    title: "PLANX_MANAGEMENT",
-    description: "Next-gen construction management tool for real-time inventory control, financial oversight, and site-to-office sync.",
-    technologies: ["FLUTTER", "STATE_MANAGEMENT", "OFFLINE-FIRST_SYNC"],
+    id: "04",
+    title: "PLANX MANAGEMENT",
+    description: "Construction management tool for real-time inventory control, financial oversight, and site-to-office reporting.",
+    technologies: ["FLUTTER", "STATE MANAGEMENT", "OFFLINE-FIRST SYNC"],
     details: [
-      "REAL-TIME_MATERIAL_INVENTORY_MONITOR.",
-      "FINANCIAL_HEALTH_DASHBOARDS.",
-      "AUTOMATED_FIELD-TO-OFFICE_REPORTING.",
-      "HIGH-PERFORMANCE_STATE_SYNC."
+      "Real-time material inventory tracking.",
+      "Financial health and budget dashboards.",
+      "Automated field-to-office progress reports.",
+      "High-performance offline-first data sync."
     ],
   },
   {
-    id: "0x3E",
-    title: "XMARK_STEEL",
-    description: "Industrial precision pricing engine for steel manufacturers, automating custom estimations and generating legal quotes.",
-    technologies: ["FLUTTER", "MATH_ENGINES", "PDF_GENERATION"],
+    id: "05",
+    title: "XMARK STEEL",
+    description: "Precision pricing tool for steel manufacturers, automating custom estimations and generating professional quotes.",
+    technologies: ["FLUTTER", "CALCULATION ENGINE", "PDF GENERATION"],
     details: [
-      "PROPRIETARY_PRICE_ESTIMATION_ALGO.",
-      "ONE-TAP_AUTOMATED_LEGAL_QUOTES.",
-      "OFFLINE-FIRST_INDUSTRIAL_RELIABILITY.",
-      "STREAMLINED_B2B_MANUFACTURING_FLOW."
+      "Custom price estimation algorithm.",
+      "One-tap automated professional quote generation.",
+      "Offline-first reliability for industrial use.",
+      "Streamlined B2B manufacturing workflow."
     ],
     link: "https://xmark-13f80.web.app/"
   },
@@ -102,7 +102,7 @@ const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => v
 
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-6">
-            <span className="text-[#00FF9C] text-[10px] font-black tracking-widest uppercase">SPEC_REPORT :: {project.id}</span>
+            <span className="text-[#00FF9C] text-[10px] font-black tracking-widest uppercase">PROJECT OVERVIEW — {project.id}</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-[#EDEDED] mb-8 tracking-tighter uppercase leading-[0.9]">
             {project.title}
@@ -122,11 +122,11 @@ const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => v
         <div className="grid md:grid-cols-2 gap-12">
           <div>
             <h3 className="text-[#EDEDED] font-black uppercase tracking-widest text-xs mb-8 flex items-center gap-2">
-              <span className="w-1 h-3 bg-[#00FF9C]" /> _CORE_DELIVERY
+              <span className="w-1 h-3 bg-[#00FF9C]" /> Key Deliverables
             </h3>
             <ul className="space-y-4">
               {project.details.map((d, i) => (
-                <li key={i} className="flex items-start gap-4 text-[#888888] text-[12px] leading-relaxed uppercase">
+                <li key={i} className="flex items-start gap-4 text-[#888888] text-[12px] leading-relaxed">
                   <div className="w-1 h-1 bg-[#1F1F1F] shrink-0 mt-1.5" />
                   {d}
                 </li>
@@ -140,14 +140,14 @@ const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => v
                 onClick={() => window.open(project.link, "_blank")}
                 className="w-full py-5 bg-[#00FF9C] text-black font-black uppercase tracking-widest text-[10px] flex items-center justify-center gap-3 hover:shadow-[0_0_20px_rgba(0,255,156,0.3)] transition-all"
               >
-                DEPLOY_TO_PRODUCTION <ExternalLink size={16} />
+                View Live Project <ExternalLink size={16} />
               </button>
             )}
             <button 
               onClick={onClose}
               className="w-full py-5 border border-[#1F1F1F] text-[#888888] font-black uppercase tracking-widest text-[10px] hover:border-[#00FF9C] hover:text-[#00FF9C] transition-all"
             >
-              TERMINATE_VIEW
+              Close
             </button>
           </div>
         </div>
@@ -170,7 +170,7 @@ const ProjectModule = ({ project, index }: { project: any, index: number }) => {
       >
         <div className="absolute inset-x-0 bottom-0 top-1/2 bg-gradient-to-t from-[#0A0A0A] to-transparent z-10" />
         
-        {/* Background Visual Artifact */}
+        {/* Background Visual */}
         <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity">
            <div className="absolute top-10 left-10 text-[200px] font-black leading-none uppercase selection:bg-transparent tracking-tighter opacity-10">
              {project.id}
@@ -221,11 +221,10 @@ const Projects = () => {
             className="flex items-center gap-3 mb-6"
           >
             <div className="w-6 h-[1px] bg-[#00FF9C]" />
-            <span className="text-[#00FF9C] text-[10px] font-black tracking-[0.4em] uppercase">PROJECT_REGISTRY</span>
+            <span className="text-[#00FF9C] text-[10px] font-black tracking-[0.4em] uppercase">Featured Projects</span>
           </motion.div>
           <h2 className="text-5xl md:text-8xl font-black mb-12 tracking-tighter uppercase leading-[0.8]">
-            CODE <br />
-            <span className="text-hacker drop-shadow-[0_0_10px_rgba(0,255,156,0.13)]">_FLEET_STATUS.</span>
+            <span className="text-hacker drop-shadow-[0_0_10px_rgba(0,255,156,0.13)]">MY WORK.</span>
           </h2>
           
           <motion.button 
@@ -233,7 +232,7 @@ const Projects = () => {
             onClick={() => window.open("https://github.com/NaheelJ", "_blank")}
             className="text-[10px] font-black uppercase tracking-[0.3em] flex items-center gap-4 text-[#888888] transition-colors"
           >
-            _GOTO_GITHUB_RESOURCES <Github size={14} />
+            View GitHub Profile <Github size={14} />
           </motion.button>
         </div>
 

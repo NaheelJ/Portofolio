@@ -3,31 +3,31 @@ import { useRef, useState } from "react";
 import { Smartphone, Database, Cloud, Layers, Flame, Server, Users, Workflow, Braces, CloudCog, SaveAll, RefreshCw, CreditCard, Bell, Cpu, Globe, Rocket, ShieldCheck, Terminal, ChevronRight } from "lucide-react";
 
 const CAT_LIST = {
-  "0x0_CORE": [
+  "Core Skills": [
     { name: "FLUTTER", level: 95, color: "#00FF9C" },
     { name: "DART", level: 90, color: "#00FF9C" },
     { name: "FIREBASE", icon: Flame, level: 85, color: "#00FF9C" },
     { name: "NODE.JS", icon: Server, level: 80, color: "#00FF9C" },
-    { name: "GCP_CLOUD", icon: Cloud, level: 75, color: "#00FF9C" },
+    { name: "GOOGLE CLOUD", icon: Cloud, level: 75, color: "#00FF9C" },
     { name: "ANDROID", icon: Smartphone, level: 85, color: "#00FF9C" },
   ],
-  "0x1_ARCH": [
+  "Architecture": [
     { name: "PROVIDER", icon: RefreshCw, level: 95 },
     { name: "GETX", icon: Layers, level: 90 },
-    { name: "CLEAN_ARC", icon: ShieldCheck, level: 85 },
-    { name: "STORAGE", icon: SaveAll, level: 80 },
+    { name: "CLEAN ARCHITECTURE", icon: ShieldCheck, level: 85 },
+    { name: "LOCAL STORAGE", icon: SaveAll, level: 80 },
   ],
-  "0x2_FLOW": [
-    { name: "FUNCTIONS", icon: CloudCog, level: 85 },
-    { name: "REST_API", icon: Globe, level: 90 },
-    { name: "MICRO_S", icon: Cpu, level: 70 },
-    { name: "CI/CD", icon: Rocket, level: 75 },
+  "Integrations": [
+    { name: "CLOUD FUNCTIONS", icon: CloudCog, level: 85 },
+    { name: "REST API", icon: Globe, level: 90 },
+    { name: "MICROSERVICES", icon: Cpu, level: 70 },
+    { name: "CI / CD PIPELINES", icon: Rocket, level: 75 },
   ],
-  "0x3_MISC": [
-    { name: "PAYMENT", icon: CreditCard, level: 85 },
-    { name: "PUSH_NOT", icon: Bell, level: 90 },
-    { name: "STRATEGY", icon: Users, level: 80 },
-    { name: "AUTOMATION", icon: Workflow, level: 75 },
+  "Additional Skills": [
+    { name: "PAYMENT GATEWAYS", icon: CreditCard, level: 85 },
+    { name: "PUSH NOTIFICATIONS", icon: Bell, level: 90 },
+    { name: "TEAM COLLABORATION", icon: Users, level: 80 },
+    { name: "WORKFLOW AUTOMATION", icon: Workflow, level: 75 },
   ],
 };
 
@@ -48,10 +48,10 @@ const SkillModule = ({ skill, index }: { skill: any, index: number }) => {
         <div className="w-10 h-10 border border-[#1F1F1F] flex items-center justify-center bg-[#0A0A0A] group-hover:border-[#00FF9C] transition-all">
           {(() => { const Icon = skill.icon || Terminal; return <Icon className="text-[#00FF9C]" size={18} />; })()}
         </div>
-        <span className="text-[10px] font-black text-[#888888] uppercase tracking-widest group-hover:text-[#00FF9C] tabular-nums transition-colors">{skill.level}.00%</span>
+        <span className="text-[10px] font-black text-[#888888] uppercase tracking-widest group-hover:text-[#00FF9C] tabular-nums transition-colors">{skill.level}%</span>
       </div>
       
-      <h4 className="text-[#EDEDED] font-black text-[12px] mb-4 tracking-[0.1em] group-hover:text-hacker transition-colors">{">> "} {skill.name}</h4>
+      <h4 className="text-[#EDEDED] font-black text-[12px] mb-4 tracking-[0.1em] group-hover:text-hacker transition-colors">{skill.name}</h4>
       
       <div className="h-1 w-full bg-[#1F1F1F] overflow-hidden">
         <motion.div 
@@ -66,7 +66,7 @@ const SkillModule = ({ skill, index }: { skill: any, index: number }) => {
 };
 
 const Skills = () => {
-  const [activeTab, setActiveTab] = useState<keyof typeof CAT_LIST>("0x0_CORE");
+  const [activeTab, setActiveTab] = useState<keyof typeof CAT_LIST>("Core Skills");
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
@@ -80,14 +80,14 @@ const Skills = () => {
             className="flex items-center gap-3 mb-6"
           >
             <div className="h-[1px] w-6 bg-[#00FF9C]" />
-            <span className="text-[#00FF9C] text-[10px] font-black tracking-[0.4em] uppercase">SYSTEM_REPOSITORY</span>
+            <span className="text-[#00FF9C] text-[10px] font-black tracking-[0.4em] uppercase">Skills & Expertise</span>
           </motion.div>
           <h2 className="text-5xl md:text-8xl font-black mb-12 tracking-tighter uppercase leading-[0.8]">
-            DEVELOPER <br />
-            <span className="text-hacker drop-shadow-[0_0_10px_rgba(0,255,156,0.13)]">_SPEC_FILE.</span>
+            TECHNICAL <br />
+            <span className="text-hacker drop-shadow-[0_0_10px_rgba(0,255,156,0.13)]">PROFILE.</span>
           </h2>
 
-          {/* TAB NAVIGATION MODULE */}
+          {/* TAB NAVIGATION */}
           <div className="flex flex-wrap justify-start gap-4 p-4 border border-[#1F1F1F] bg-[#111111]">
             {CATEGORIES.map((cat) => (
               <button

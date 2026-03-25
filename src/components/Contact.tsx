@@ -6,9 +6,9 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { useToast } from "@/hooks/use-toast";
 
 const CONTACT_INFO = [
-  { id: "0x01", label: "MAIL_CHANNEL", value: "naheeljakkeeri@gmail.com", icon: Mail },
-  { id: "0x02", label: "VOICE_FREQ", value: "+91 9446085810", icon: Phone },
-  { id: "0x03", label: "GEOLOCATION", value: "Kerala, India", icon: MapPin },
+  { id: "01", label: "Email", value: "naheeljakkeeri@gmail.com", icon: Mail },
+  { id: "02", label: "Phone", value: "+91 9446085810", icon: Phone },
+  { id: "03", label: "Location", value: "Kerala, India", icon: MapPin },
 ];
 
 const SOCIAL_NODES = [
@@ -33,7 +33,7 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
-      toast({ title: "INVALID_TRANSMISSION", description: "All fields are required for handshake.", variant: "destructive" });
+      toast({ title: "Missing Information", description: "Please fill in all fields before submitting.", variant: "destructive" });
       return;
     }
 
@@ -44,10 +44,10 @@ const Contact = () => {
         createdAt: serverTimestamp(),
       });
 
-      toast({ title: "PROTOCOL_SUCCESS", description: "Transmission received. Contact re-established shortly." });
+      toast({ title: "Message Sent!", description: "Thanks for reaching out. I'll get back to you shortly." });
       setForm({ name: "", email: "", message: "" });
     } catch (error) {
-      toast({ title: "BIT_ERROR", description: "Failed to transmit message. Check network link.", variant: "destructive" });
+      toast({ title: "Something Went Wrong", description: "Failed to send your message. Please try again.", variant: "destructive" });
       console.error(error);
     } finally {
       setSubmitting(false);
@@ -59,7 +59,7 @@ const Contact = () => {
       <div className="container mx-auto px-10 relative z-10" ref={ref}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-start">
           
-          {/* LEFT: COMMAND CENTER */}
+          {/* LEFT */}
           <div className="w-full lg:pr-10">
             <motion.div 
               initial={{ opacity: 0, x: -50 }}
@@ -68,14 +68,14 @@ const Contact = () => {
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-6 h-[1px] bg-[#00FF9C]" />
-                <span className="text-[#00FF9C] text-[10px] font-black tracking-[0.4em] uppercase">LINK_INITIALIZATION</span>
+                <span className="text-[#00FF9C] text-[10px] font-black tracking-[0.4em] uppercase">Get In Touch</span>
               </div>
               <h2 className="text-5xl md:text-7xl font-black mb-10 tracking-tighter leading-[0.8] uppercase max-w-lg">
-                _ESTABLISH <br />
-                <span className="text-hacker drop-shadow-[0_0_10px_rgba(0,255,156,0.13)]">_CONNECTION.</span>
+                LET'S <br />
+                <span className="text-hacker drop-shadow-[0_0_10px_rgba(0,255,156,0.13)]">CONNECT.</span>
               </h2>
               <p className="text-lg text-[#888888] font-light leading-relaxed max-w-sm lowercase">
-                ready to transform your vision into a digital reality? reach out and let's craft something legendary.
+                ready to bring your vision to life? reach out and let's build something great together.
               </p>
             </motion.div>
 
@@ -114,7 +114,7 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* RIGHT: TRANSMISSION FORM */}
+          {/* RIGHT: CONTACT FORM */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -128,40 +128,40 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
               <div className="space-y-4">
                 <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#888888] flex items-center gap-2">
-                   <ChevronRight size={10} className="text-[#00FF9C]" /> _IDENTIFIER
+                   <ChevronRight size={10} className="text-[#00FF9C]" /> Your Name
                 </label>
                 <input 
                   name="name"
                   value={form.name}
                   onChange={handleChange}
-                  placeholder="USER_FULL_NAME"
+                  placeholder="Full Name"
                   className="w-full px-8 py-5 bg-[#0A0A0A] border border-[#1F1F1F] focus:border-[#00FF9C] outline-none text-[#EDEDED] transition-all placeholder:text-[#1F1F1F] text-sm tracking-widest uppercase font-black"
                 />
               </div>
 
               <div className="space-y-4">
                 <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#888888] flex items-center gap-2">
-                   <ChevronRight size={10} className="text-[#00FF9C]" /> _CHANNEL
+                   <ChevronRight size={10} className="text-[#00FF9C]" /> Email Address
                 </label>
                 <input 
                   name="email"
                   type="email"
                   value={form.email}
                   onChange={handleChange}
-                  placeholder="USER_EMAIL_ADDR"
+                  placeholder="Your Email"
                   className="w-full px-8 py-5 bg-[#0A0A0A] border border-[#1F1F1F] focus:border-[#00FF9C] outline-none text-[#EDEDED] transition-all placeholder:text-[#1F1F1F] text-sm tracking-widest uppercase font-black"
                 />
               </div>
 
               <div className="space-y-4">
                 <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#888888] flex items-center gap-2">
-                   <ChevronRight size={10} className="text-[#00FF9C]" /> _TRANSMISSION
+                   <ChevronRight size={10} className="text-[#00FF9C]" /> Your Message
                 </label>
                 <textarea 
                   name="message"
                   value={form.message}
                   onChange={handleChange}
-                  placeholder="MODULE_SPEC_OR_VISION..."
+                  placeholder="Tell me about your project or idea..."
                   rows={4}
                   className="w-full px-8 py-5 bg-[#0A0A0A] border border-[#1F1F1F] focus:border-[#00FF9C] outline-none text-[#EDEDED] transition-all placeholder:text-[#1F1F1F] text-sm tracking-widest uppercase font-black resize-none"
                 />
@@ -174,12 +174,12 @@ const Contact = () => {
                 whileTap={{ scale: 0.98 }}
                 className="w-full py-6 bg-transparent border border-[#00FF9C] text-[#00FF9C] font-black uppercase tracking-[0.3em] flex items-center justify-center gap-4 transition-all text-xs disabled:opacity-50"
               >
-                {submitting ? "_TRANSMITTING..." : "[ EXEC_SEND_TRANSMISSION ]"} <Send size={16} />
+                {submitting ? "Sending..." : "Send Message"} <Send size={16} />
               </motion.button>
               
               <div className="flex justify-between items-center text-[8px] font-black tracking-[0.4em] text-[#1F1F1F] pt-4">
-                <span>ENCRYPT_STATE::E2EE</span>
-                <span>STATUS_NODES::ONLINE</span>
+                <span>SECURED</span>
+                <span>AVAILABLE FOR WORK</span>
               </div>
             </form>
           </motion.div>

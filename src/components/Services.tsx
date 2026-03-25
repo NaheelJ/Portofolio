@@ -4,46 +4,46 @@ import { Smartphone, Globe, Layers, Palette, Wrench, ArrowRight, Cloud, Code2, T
 
 const SPEC_LIST = [
   { 
-    id: "0x01", 
+    id: "01", 
     icon: Smartphone, 
-    title: "MOBILE_ARCHITECTURE", 
-    desc: "Engineering high-performance iOS & Android applications with native-level precision using Flutter.",
-    points: ["Cross-platform_Excellence", "Custom_UI_Engines", "Device_Optimization", "App_Store_Mastery"]
+    title: "MOBILE DEVELOPMENT", 
+    desc: "Building high-performance iOS & Android applications with native-level precision using Flutter.",
+    points: ["Cross-platform Excellence", "Custom UI Components", "Device Optimization", "App Store Publishing"]
   },
   { 
-    id: "0x02", 
+    id: "02", 
     icon: Cloud, 
-    title: "FULL_STACK_CLOUD", 
-    desc: "Architecting scalable backends and seamless API infrastructures on GCP and Firebase.",
-    points: ["GCP_Mastery", "Serverless_Logic", "Real-time_Databases", "Secure_Auth_Systems"]
+    title: "FULL STACK & CLOUD", 
+    desc: "Designing scalable backends and seamless API infrastructures on GCP and Firebase.",
+    points: ["Google Cloud Platform", "Serverless Functions", "Real-time Databases", "Secure Authentication"]
   },
   { 
-    id: "0x03", 
+    id: "03", 
     icon: Palette, 
-    title: "INTERACTIVE_UI", 
+    title: "UI & INTERACTIONS", 
     desc: "Crafting pixel-perfect, motion-rich experiences that captivate and convert users.",
-    points: ["Micro_animations", "Design_Systems", "Interactive_Prototypes", "Visual_Flow"]
+    points: ["Micro-animations", "Design Systems", "Interactive Prototypes", "Visual Flow"]
   },
   { 
-    id: "0x04", 
+    id: "04", 
     icon: Globe, 
-    title: "MODERN_WEB", 
+    title: "WEB DEVELOPMENT", 
     desc: "Building production-ready web applications that are as fast as they are beautiful.",
-    points: ["Node.js_Nodes", "Performance_Tuning", "Responsive_Grids", "SEO_Mastery"]
+    points: ["Node.js Backend", "Performance Tuning", "Responsive Layouts", "SEO Optimization"]
   },
   { 
-    id: "0x05", 
+    id: "05", 
     icon: Wrench, 
-    title: "TECHNICAL_AUDIT", 
+    title: "CODE REVIEW & AUDIT", 
     desc: "Deep-diving into existing codebases to optimize performance, security, and scalability.",
-    points: ["Refactoring", "Performance_Tuning", "Security_Hardening", "Legacy_Upgrades"]
+    points: ["Refactoring", "Performance Tuning", "Security Hardening", "Legacy Upgrades"]
   },
   { 
-    id: "0x06", 
+    id: "06", 
     icon: Terminal, 
-    title: "INTEGRATION_SYNC", 
-    desc: "Synchronizing complex data streams across multiple platforms and legacy systems.",
-    points: ["Data_Migration", "API_Middleware", "Webhook_Engines", "State_Persistence"]
+    title: "SYSTEM INTEGRATIONS", 
+    desc: "Connecting complex data flows across multiple platforms and third-party services.",
+    points: ["Data Migration", "API Middleware", "Webhook Setup", "State Management"]
   }
 ];
 
@@ -96,11 +96,11 @@ const Services = () => {
             className="flex items-center gap-3 mb-6"
           >
             <div className="w-6 h-[1px] bg-[#00FF9C]" />
-            <span className="text-[#00FF9C] text-[10px] font-black tracking-[0.4em] uppercase">SYSTEM_CAPABILITIES</span>
+            <span className="text-[#00FF9C] text-[10px] font-black tracking-[0.4em] uppercase">What I Offer</span>
           </motion.div>
           <h2 className="text-5xl md:text-8xl font-black mb-12 tracking-tighter uppercase leading-[0.8] max-w-3xl">
-            TECHNICAL <br />
-            <span className="text-hacker drop-shadow-[0_0_10px_rgba(0,255,156,0.13)]">_COMMAND_SUITE.</span>
+            SERVICES & <br />
+            <span className="text-hacker drop-shadow-[0_0_10px_rgba(0,255,156,0.13)]">EXPERTISE.</span>
           </h2>
         </div>
 
@@ -109,7 +109,7 @@ const Services = () => {
             <SpecCard key={s.id} spec={s} index={i} />
           ))}
           
-          {/* CTA MODULE */}
+          {/* CTA CARD */}
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -117,10 +117,10 @@ const Services = () => {
           >
             <Code2 size={40} className="text-[#00FF9C] mb-8 opacity-40 group-hover:opacity-100 transition-opacity" />
             <h3 className="text-3xl font-black text-[#EDEDED] mb-4 uppercase tracking-tighter leading-none">
-              READY_FOR_ <br />DEPLOYMENT?
+              READY TO <br /> WORK TOGETHER?
             </h3>
             <p className="text-[12px] text-[#888888] mb-10 font-medium">
-              Initialize a project connection and let's craft a digital masterpiece.
+              Let's connect and build something great together.
             </p>
             <motion.button
               onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
@@ -128,7 +128,7 @@ const Services = () => {
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-transparent border border-[#00FF9C] text-[#00FF9C] font-black uppercase tracking-widest text-[10px] flex items-center gap-3 transition-colors"
             >
-              EXEC_CONTACT <ArrowRight size={14} />
+              Get In Touch <ArrowRight size={14} />
             </motion.button>
           </motion.div>
         </div>
