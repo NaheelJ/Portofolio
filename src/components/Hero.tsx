@@ -175,7 +175,7 @@ const Hero = () => {
             {/* Stat badges */}
             {[
               { label: "Experience", value: "1 Year", delay: 0.85, pos: "top-2 right-0", yAmp: -4 },
-              { label: "Projects", value: "5+", delay: 0.95, pos: "bottom-6 -left-4", yAmp: 5 },
+              { label: "Contributions", value: "10+", delay: 0.95, pos: "bottom-6 -left-4", yAmp: 5 },
               { label: "Users Served", value: "10K+", delay: 1.05, pos: "bottom-12 -right-8", yAmp: 4 },
             ].map((b, i) => (
               <motion.div key={i}
