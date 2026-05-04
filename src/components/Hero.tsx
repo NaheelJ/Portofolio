@@ -120,34 +120,56 @@ const Hero = () => {
             transition={{ duration: 0.9, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="relative flex justify-center items-center">
 
-            {/* Rotating rings */}
-            <motion.div animate={{ rotate: -360 }} transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
-              className="absolute hidden md:block w-[310px] h-[310px] md:w-[360px] md:h-[360px] rounded-full"
-              style={{ border: "1px solid rgba(255,255,255,0.5)" }} />
+            {/* Pixel-Perfect Circle Layout Area */}
+            <div className="relative flex justify-center items-center">
+              
+              {/* Rotating decoration rings (behind) */}
+              <motion.div animate={{ rotate: 360 }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                className="absolute w-[330px] h-[330px] md:w-[460px] md:h-[460px] rounded-full border border-white/10 border-dashed" />
+              
+              <motion.div animate={{ rotate: -360 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute hidden md:block w-[380px] h-[380px] md:w-[520px] md:h-[520px] rounded-full border border-white/[0.05]" />
 
-            {/* Orbit dots */}
-            {[0, 72, 144, 216, 288].map((deg, i) => (
-              <motion.div key={i} className="absolute hidden md:block w-1.5 h-1.5 rounded-full"
-                style={{
-                  background: i % 2 === 0 ? "#495057" : "#dee2e6",
-                  top: "50%", left: "50%", transformOrigin: "0 0",
-                  transform: `rotate(${deg}deg) translateX(190px) translateY(-3px)`,
-                  boxShadow: i % 2 === 0 ? "0 0 6px rgba(73,80,87,0.6)" : "0 0 6px rgba(255,255,255,0.8)",
-                }}
-                animate={{ opacity: [0.3, 1, 0.3], scale: [0.7, 1.3, 0.7] }}
-                transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.45, ease: "easeInOut" }} />
-            ))}
+              {/* Main Circle & Portrait Container */}
+              <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] flex items-end justify-center">
+                
+                {/* 1. Circle Background/Frame */}
+                <div className="absolute inset-0 rounded-full border-2 border-white/20 bg-gradient-to-b from-white/[0.08] to-transparent z-0" />
+                
+                {/* 2. Bottom Layer (Clipped to Circle) */}
+                <div className="absolute inset-0 rounded-full overflow-hidden z-10">
+                  <img src={naheelPhoto} alt="Naheel J"
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-auto h-[115%] max-w-none object-contain object-bottom transition-all duration-500"
+                    style={{
+                      filter: "contrast(1.02) brightness(1.0) drop-shadow(0 10px 30px rgba(0,0,0,0.3))",
+                    }}
+                  />
+                </div>
 
-            {/* Portrait area */}
-            <div className="relative z-10 flex items-end justify-center w-[280px] h-[320px] md:w-[380px] md:h-[440px] -translate-y-[20px] md:-translate-y-[30px]">
-              <img src={naheelPhoto} alt="Naheel J"
-                className="w-full h-full object-contain object-bottom"
-                style={{
-                  filter: "contrast(1.05) brightness(0.95) drop-shadow(0 -10px 40px rgba(255,255,255,0.15))",
-                  WebkitMaskImage: "linear-gradient(to top, transparent 0%, black 15%)",
-                  maskImage: "linear-gradient(to top, transparent 0%, black 15%)"
-                }}
-              />
+                {/* 3. Top Layer (Overflowing/Popping out) */}
+                <div className="absolute inset-0 overflow-visible z-20 pointer-events-none">
+                  <img src={naheelPhoto} alt=""
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-auto h-[115%] max-w-none object-contain object-bottom transition-all duration-500"
+                    style={{
+                      filter: "contrast(1.02) brightness(1.0) drop-shadow(0 -15px 40px rgba(255,255,255,0.1))",
+                      clipPath: 'inset(0 0 45% 0)' // Shows only the top portion to avoid leaking at bottom sides
+                    }}
+                  />
+                </div>
+
+                {/* Orbit dots relative to the main circle */}
+                {[0, 72, 144, 216, 288].map((deg, i) => (
+                  <motion.div key={i} className="absolute hidden md:block w-1.5 h-1.5 rounded-full z-30"
+                    style={{
+                      background: i % 2 === 0 ? "#495057" : "#dee2e6",
+                      top: "50%", left: "50%", transformOrigin: "0 0",
+                      transform: `rotate(${deg}deg) translateX(${window.innerWidth < 768 ? 160 : 210}px) translateY(-3px)`,
+                      boxShadow: i % 2 === 0 ? "0 0 6px rgba(73,80,87,0.6)" : "0 0 6px rgba(255,255,255,0.8)",
+                    }}
+                    animate={{ opacity: [0.3, 1, 0.3], scale: [0.7, 1.3, 0.7] }}
+                    transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.45, ease: "easeInOut" }} />
+                ))}
+              </div>
             </div>
 
             {/* Stat badges */}
